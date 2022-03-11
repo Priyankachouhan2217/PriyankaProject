@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ApiCrud.Models.Emp1>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Employee List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null,new {@class="btn btn-primary"})
+</p>
+<table class="table table-hover table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpSal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpCity)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpSal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpCity)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EmpID },new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EmpID } ,new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EmpID } ,new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

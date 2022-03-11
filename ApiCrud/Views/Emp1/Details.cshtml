@@ -1,0 +1,43 @@
+﻿@model ApiCrud.Models.Emp1
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Emp1</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpSal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpSal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpCity)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmpID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

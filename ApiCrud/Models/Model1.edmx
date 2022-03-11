@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CurdApiModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Emp1">
+          <Key>
+            <PropertyRef Name="EmpID" />
+          </Key>
+          <Property Name="EmpID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpName" Type="varchar" MaxLength="50" />
+          <Property Name="EmpSal" Type="int" />
+          <Property Name="EmpCity" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EmpAdd">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Empid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StreetName" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__EmpAdd__Empid__398D8EEE">
+          <End Role="Emp1" Type="Self.Emp1" Multiplicity="1" />
+          <End Role="EmpAdd" Type="Self.EmpAdd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Emp1">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="EmpAdd">
+              <PropertyRef Name="Empid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CurdApiModel1StoreContainer">
+          <EntitySet Name="Emp1" EntityType="Self.Emp1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpAdd" EntityType="Self.EmpAdd" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__EmpAdd__Empid__398D8EEE" Association="Self.FK__EmpAdd__Empid__398D8EEE">
+            <End Role="Emp1" EntitySet="Emp1" />
+            <End Role="EmpAdd" EntitySet="EmpAdd" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CurdApiModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Emp1">
+          <Key>
+            <PropertyRef Name="EmpID" />
+          </Key>
+          <Property Name="EmpID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpSal" Type="Int32" />
+          <Property Name="EmpCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EmpAdds" Relationship="Self.FK__EmpAdd__Empid__398D8EEE" FromRole="Emp1" ToRole="EmpAdd" />
+        </EntityType>
+        <EntityType Name="EmpAdd">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Empid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StreetName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Emp1" Relationship="Self.FK__EmpAdd__Empid__398D8EEE" FromRole="EmpAdd" ToRole="Emp1" />
+        </EntityType>
+        <Association Name="FK__EmpAdd__Empid__398D8EEE">
+          <End Role="Emp1" Type="Self.Emp1" Multiplicity="1" />
+          <End Role="EmpAdd" Type="Self.EmpAdd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Emp1">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="EmpAdd">
+              <PropertyRef Name="Empid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CurdApiEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Emp1" EntityType="Self.Emp1" />
+          <EntitySet Name="EmpAdds" EntityType="Self.EmpAdd" />
+          <AssociationSet Name="FK__EmpAdd__Empid__398D8EEE" Association="Self.FK__EmpAdd__Empid__398D8EEE">
+            <End Role="Emp1" EntitySet="Emp1" />
+            <End Role="EmpAdd" EntitySet="EmpAdds" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CurdApiModel1StoreContainer" CdmEntityContainer="CurdApiEntities1">
+          <EntitySetMapping Name="Emp1">
+            <EntityTypeMapping TypeName="CurdApiModel1.Emp1">
+              <MappingFragment StoreEntitySet="Emp1">
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="EmpSal" ColumnName="EmpSal" />
+                <ScalarProperty Name="EmpCity" ColumnName="EmpCity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpAdds">
+            <EntityTypeMapping TypeName="CurdApiModel1.EmpAdd">
+              <MappingFragment StoreEntitySet="EmpAdd">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Empid" ColumnName="Empid" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CurdApiModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Emp1">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmpName" Type="varchar" MaxLength="50" />
+    <Property Name="EmpSal" Type="int" />
+    <Property Name="EmpCity" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EmpAdd">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Empid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StreetName" Type="varchar" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="State" Type="varchar" MaxLength="50" />
+    <Property Name="Country" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__EmpAdd__Empid__398D8EEE">
+    <End Role="Emp1" Type="Self.Emp1" Multiplicity="1" />
+    <End Role="EmpAdd" Type="Self.EmpAdd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Emp1">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="EmpAdd">
+        <PropertyRef Name="Empid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CurdApiModel1StoreContainer">
+    <EntitySet Name="Emp1" EntityType="Self.Emp1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmpAdd" EntityType="Self.EmpAdd" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__EmpAdd__Empid__398D8EEE" Association="Self.FK__EmpAdd__Empid__398D8EEE">
+      <End Role="Emp1" EntitySet="Emp1" />
+      <End Role="EmpAdd" EntitySet="EmpAdd" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

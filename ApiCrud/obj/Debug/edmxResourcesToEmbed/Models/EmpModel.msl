@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CurdApiModelStoreContainer" CdmEntityContainer="CurdApiEntities">
+    <EntitySetMapping Name="Emp1">
+      <EntityTypeMapping TypeName="CurdApiModel.Emp1">
+        <MappingFragment StoreEntitySet="Emp1">
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+          <ScalarProperty Name="EmpSal" ColumnName="EmpSal" />
+          <ScalarProperty Name="EmpCity" ColumnName="EmpCity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
